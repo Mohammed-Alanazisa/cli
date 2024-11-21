@@ -291,11 +291,6 @@ func tokenMissingWorkflowScope(resp *http.Response) bool {
 		return false
 	}
 
-	for _, s := range strings.Split(scopes, ",") {
-		if s == "workflow" {
-			return false
-		}
-	}
 
-	return true
+	return slices.Contains(strings.Split(scopes, ","), "workflow")
 }
